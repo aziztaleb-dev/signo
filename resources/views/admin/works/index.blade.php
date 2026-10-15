@@ -40,7 +40,11 @@
                     font-size:13px;
                     color:#6b7280;
                 ">
-                    {{ $works->total() }} travail(aux)
+                    @if($search !== '')
+                        {{ $works->total() }} résultat(s) pour « {{ $search }} »
+                    @else
+                        {{ $works->total() }} travail(aux)
+                    @endif
                 </p>
             </div>
 
@@ -63,6 +67,78 @@
             </a>
 
         </div>
+
+        {{-- Barre de recherche --}}
+        <form
+            action="{{ route('admin.works.index') }}"
+            method="GET"
+            style="
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-bottom:20px;
+    "
+        >
+            <div style="
+        position:relative;
+        flex:1;
+        max-width:450px;
+    ">
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="
+                position:absolute;
+                left:12px;
+                top:50%;
+                transform:translateY(-50%);
+                color:#9ca3af;
+                pointer-events:none;
+            "
+                >
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+
+                <input
+                    type="search"
+                    name="search"
+                    value="{{ $search }}"
+                    placeholder="Rechercher par nom, nom anglais ou slug..."
+                    style="
+                width:100%;
+                box-sizing:border-box;
+                padding:11px 12px 11px 40px;
+                border:1px solid #e5e7eb;
+                border-radius:8px;
+                font-size:13px;
+                color:#374151;
+                outline:none;
+                background:#fff;
+            "
+                >
+            </div>
+
+            <button type="submit" class="btn">
+                Rechercher
+            </button>
+
+            @if($search !== '')
+                <a
+                    href="{{ route('admin.works.index') }}"
+                    class="btn btn-secondary"
+                    style="text-decoration:none;"
+                >
+                    Réinitialiser
+                </a>
+            @endif
+        </form>
 
         {{-- Tableau --}}
         <div style="overflow-x:auto;">
@@ -342,7 +418,6 @@
                                 font-size:13px;
                                 color:#9ca3af;
                             ">
-                                Commencez par créer votre premier travail.
                             </div>
 
                             <div style="margin-top:18px;">

@@ -19,6 +19,7 @@
         "
     >
         <h1>{{ mb_strtoupper($work->title) }}</h1>
+        <p>{{ mb_strtoupper($work->title_en) }}</p>
     </section>
 
 

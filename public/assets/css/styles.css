@@ -695,13 +695,14 @@ img {
     padding: 23px;
     font-size: 13px;
 }
-
 .news-banner {
     min-height: 375px;
     background-position: center;
     background-size: cover;
     display: grid;
     place-items: center;
+    align-content: center;
+    gap: 5px;
     text-align: center;
 }
 
@@ -711,6 +712,9 @@ img {
     font-weight: 700;
 }
 
+.news-banner p {
+    margin: 0;
+}
 .news-content {
     background: var(--background);
 }

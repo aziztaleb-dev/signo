@@ -9,19 +9,28 @@ use App\Models\Work;
 use App\Models\WorkCategory;
 use App\Models\WorkSubcategory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class WorkController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $search = trim($request->input('search', ''));
         $works = Work::with('subcategory.category')
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'LIKE', "%{$search}%")
+                        ->orWhere('title_en', 'LIKE', "%{$search}%")
+                        ->orWhere('slug', 'LIKE', "%{$search}%");
+                });
+            })
             ->latest()
-            ->paginate(10);
+            ->paginate(10)
+            ->withQueryString();
 
-        return view('admin.works.index', compact('works'));
+        return view('admin.works.index', compact('works', 'search'));
     }
-
     public function create()
     {
         $categories = WorkCategory::orderBy('name')->get();

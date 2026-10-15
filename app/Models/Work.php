@@ -13,6 +13,7 @@ class Work extends Model
     protected $fillable = [
         'work_subcategory_id',
         'title',
+        'title_en',
         'slug',
         'images',
         'description',
