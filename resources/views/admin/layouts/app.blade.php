@@ -44,7 +44,7 @@
     <div class="sidebar-content">
 
         <div class="nav-title">
-            Gestion
+            Dashboard
         </div>
 
         <a
@@ -62,6 +62,76 @@
             <span>Tableau de bord</span>
         </a>
 
+        <div class="nav-title">
+            Pages
+        </div>
+
+        <a
+            href="{{ route('admin.home-page.index') }}"
+            class="nav-link {{ request()->routeIs('admin.home-page.*') ? 'active' : '' }}"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 9v12"></path>
+                <path d="M13 13h4"></path>
+                <path d="M13 17h4"></path>
+            </svg>
+
+            <span>Page d’accueil</span>
+        </a>
+
+        <a
+            href="{{ route('admin.service-page.index') }}"
+            class="nav-link {{ request()->routeIs('admin.service-page.*') ? 'active' : '' }}"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M7 7h10"></path>
+                <path d="M7 11h10"></path>
+                <path d="M7 15h6"></path>
+                <path d="M7 19h10"></path>
+            </svg>
+
+            <span>Nos services</span>
+        </a>
+
+        <a
+            href="{{ route('admin.contact-page.index') }}"
+            class="nav-link {{ request()->routeIs('admin.contact-page.*') ? 'active' : '' }}">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M21 10.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 2.9a8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+
+            <span>Contact</span>
+        </a>
+
+
+        <div class="nav-title">
+            Gestion
+        </div>
 
         <a
             href="{{ route('admin.news.index') }}"

@@ -8,10 +8,40 @@ use App\Http\Controllers\Admin\WorkCategoryController;
 use App\Http\Controllers\Admin\WorkSubcategoryController;
 use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\HomePageSectionController;
+use App\Http\Controllers\Admin\ServicePageSectionController;
+use App\Http\Controllers\Admin\ContactPageSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
+
+Route::prefix('home-page')
+    ->name('home-page.')
+    ->controller(HomePageSectionController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{homePageSection}/edit', 'edit')->name('edit');
+        Route::put('/{homePageSection}', 'update')->name('update');
+    });
+
+Route::prefix('service-page')
+    ->name('service-page.')
+    ->controller(ServicePageSectionController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{servicePageSection}/edit', 'edit')->name('edit');
+        Route::put('/{servicePageSection}', 'update')->name('update');
+    });
+
+Route::prefix('contact-page')
+    ->name('contact-page.')
+    ->controller(ContactPageSettingController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{contactPageSetting}/edit', 'edit')->name('edit');
+        Route::put('/{contactPageSetting}', 'update')->name('update');
+    });
 
 Route::resource('news', NewsController::class)->except(['show']);
 Route::resource('new-products', NewProductController::class)

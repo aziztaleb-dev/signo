@@ -1,15 +1,18 @@
 <?php
 
+use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\ServicePageController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\Front\ProjectController;
 use App\Http\Controllers\Front\WorkController as FrontWorkController;
-use App\Http\Controllers\Front\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('', function () {
-    return view('front.home');
-})->name('home');
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/nos-services', [ServicePageController::class, 'index'])
+    ->name('services');
 
 Route::get('nouveautes', [NewsController::class, 'index'])->name('nouveautes');
 
@@ -20,16 +23,11 @@ Route::get('/travaux/{workSubcategory}/{work:slug}', [FrontWorkController::class
     ->scopeBindings()
     ->name('traveaux.show');
 
-Route::get('nos-services', function () {
-    return view('front.services');
-})->name('services');
-
 Route::get('nos-projets', [ProjectController::class, 'index'])->name('projets');
 
 
-Route::get('contact', function () {
-    return view('front.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])
+    ->name('contact');
 
 Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')
