@@ -19,7 +19,7 @@
                 Gérez ici les coordonnées, les horaires, les liens des réseaux
                 sociaux et les autres informations affichées sur la page Contact.
             </p>
-            <div style="overflow-x:auto;">
+            <div class="table-responsive" style="overflow-x:auto;">
                 <table class="table">
                     <thead>
                     <tr>

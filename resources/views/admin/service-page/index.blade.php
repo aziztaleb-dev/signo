@@ -25,7 +25,7 @@
                 la page Nos services de votre site.
             </p>
 
-            <div style="overflow-x:auto;">
+            <div class="table-responsive" style="overflow-x:auto;">
 
                 <table class="table">
 

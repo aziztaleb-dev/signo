@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div style="overflow-x:auto;">
+        <div class="table-responsive" style="overflow-x:auto;">
 
             <table>
 

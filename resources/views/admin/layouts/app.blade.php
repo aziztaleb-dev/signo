@@ -14,30 +14,69 @@
 
 </head>
 <body>
-<aside class="sidebar">
+
+<div class="mobile-admin-header">
+    <a href="{{ route('admin.dashboard') }}" class="mobile-brand">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo">
+    </a>
+
+    <button
+        type="button"
+        id="sidebar-toggle"
+        class="sidebar-toggle"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+    >
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round">
+            <path d="M3 6h18"></path>
+            <path d="M3 12h18"></path>
+            <path d="M3 18h18"></path>
+        </svg>
+    </button>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="sidebar" id="admin-sidebar">
     {{-- Logo --}}
     <div class="sidebar-header">
         <a href="{{ route('admin.dashboard') }}" class="brand">
-
             <div class="brand-logo">
-                {{-- Remplace le chemin par ton vrai logo --}}
                 <img
                     src="{{ asset('assets/images/logo.png') }}"
-                    alt="logo Signo"
+                    alt="Logo Dr Nadine Ghithia"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 >
 
-                <span
-                    class="brand-logo-placeholder"
-                    style="display:none;"
-                >
+                <span class="brand-logo-placeholder" style="display:none;">
                 NG
             </span>
             </div>
-
-
         </a>
+
+        <button
+            type="button"
+            id="sidebar-close"
+            class="sidebar-close"
+            aria-label="Fermer le menu"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="m18 6-12 12"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+        </button>
     </div>
+
+
 
 
     {{-- Navigation --}}
@@ -449,7 +488,7 @@
 
     @yield('content')
 </main>
-
+<script src="{{ asset('assets-admin/js/main.js') }}"></script>
 </body>
 </html>
 

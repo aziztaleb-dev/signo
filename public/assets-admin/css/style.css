@@ -691,3 +691,819 @@ a.admin-page:hover {
     border-top: 1px solid #dee2e6;
 
 }
+
+/* =========================================================
+   RESPONSIVE ADMIN DASHBOARD
+   Desktop / Tablette / Mobile
+   À ajouter à la FIN du fichier CSS actuel
+========================================================= */
+
+/* Empêcher les débordements horizontaux */
+html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: clip;
+}
+
+body {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: clip;
+}
+
+.main,
+main.main,
+.topbar,
+.card,
+.grid,
+.sidebar,
+.sidebar-content,
+.admin-header {
+    min-width: 0;
+}
+
+.main {
+    max-width: 100%;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* =========================================================
+   DESKTOP : STRUCTURE GÉNÉRALE
+========================================================= */
+
+@media (min-width: 769px) {
+    .sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: var(--sidebar-width);
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    .sidebar-content {
+        min-height: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .admin-header {
+        position: fixed;
+        top: 0;
+        left: var(--sidebar-width);
+        right: 0;
+        height: 60px;
+        padding: 0 25px;
+    }
+
+    .main,
+    main.main {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+        max-width: calc(100% - var(--sidebar-width));
+        padding: 90px 30px 30px;
+    }
+
+    main.main {
+        padding-top: 90px !important;
+    }
+}
+
+/* =========================================================
+   TABLETTES : 769px à 1024px
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    :root {
+        --sidebar-width: 220px;
+    }
+
+    .sidebar-header {
+        padding: 0 16px;
+    }
+
+    .sidebar-content {
+        padding: 20px 10px;
+    }
+
+    .nav-link {
+        gap: 9px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .sidebar-footer {
+        padding: 10px;
+    }
+
+    .admin-header {
+        padding: 0 18px;
+    }
+
+    .main,
+    main.main {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    /* Les tableaux peuvent défiler sans élargir la page */
+    .table-responsive,
+    .table-wrapper,
+    .table-container {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 650px;
+    }
+}
+
+/* =========================================================
+   MOBILE : 768px ET MOINS
+========================================================= */
+
+@media (max-width: 768px) {
+    /* Header */
+    .admin-header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        min-height: 60px;
+        padding: 10px 15px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 8px;
+        z-index: 110;
+    }
+
+    .admin-header-link {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    /* Sidebar : affichée en haut, sans chevauchement */
+    .sidebar {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+        z-index: 100;
+    }
+
+    .sidebar-header {
+        height: 70px;
+        min-height: 70px;
+        padding: 0 16px;
+    }
+
+    .brand {
+        min-width: 0;
+    }
+
+    .brand-info {
+        min-width: 0;
+    }
+
+    .brand-name {
+        overflow-wrap: anywhere;
+    }
+
+    .sidebar-content {
+        padding: 12px;
+        overflow: visible;
+    }
+
+    .sidebar-footer {
+        padding: 10px 12px;
+    }
+
+    /* Contenu principal */
+    .main,
+    main.main {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin-left: 0;
+        padding: 22px 15px !important;
+    }
+
+    .topbar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .page-heading {
+        font-size: 22px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    .page-description {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Boutons dans les en-têtes de page */
+    .topbar > .btn,
+    .topbar > a,
+    .topbar > div {
+        max-width: 100%;
+    }
+
+    /* Cards et grilles */
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    /* Tableaux : défilement horizontal */
+    .table-responsive,
+    .table-wrapper,
+    .table-container {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    table {
+        width: 100%;
+        min-width: 650px;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 11px 12px;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    /* Formulaires */
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .home-page-form .form-section-title {
+        font-size: 19px;
+        line-height: 1.4;
+        margin: 22px 0 14px;
+    }
+
+    .home-page-form .form-group > label {
+        font-size: 14px;
+    }
+
+    .home-page-form .current-images {
+        gap: 10px;
+    }
+
+    .home-page-form .image-card {
+        width: min(150px, 100%);
+    }
+
+    /* Boutons */
+    .btn {
+        max-width: 100%;
+        min-height: 40px;
+        padding: 10px 12px;
+        white-space: normal;
+        text-align: center;
+    }
+
+    /* Groupes de boutons d'action dans les tableaux */
+    td .btn,
+    td form {
+        flex-shrink: 0;
+    }
+
+    /* Pagination */
+    .admin-pagination {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .admin-page {
+        min-width: 34px;
+        height: 34px;
+        padding: 0 8px;
+    }
+
+    /* Alertes */
+    .alert {
+        align-items: flex-start;
+        padding: 12px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    /* Éviter qu'un contenu long élargisse la page */
+    pre,
+    code {
+        overflow-wrap: anywhere;
+    }
+
+    .sidebar img,
+    .card img {
+        height: auto;
+    }
+}
+
+/* =========================================================
+   PETITS MOBILES : 480px ET MOINS
+========================================================= */
+
+@media (max-width: 480px) {
+    .admin-header {
+        justify-content: space-between;
+        padding: 9px 10px;
+    }
+
+    .admin-header-link {
+        gap: 5px;
+        padding: 8px 9px;
+        font-size: 11px;
+    }
+
+    .main,
+    main.main {
+        padding: 18px 10px !important;
+    }
+
+    .page-heading {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 13px;
+    }
+
+    .grid {
+        gap: 12px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .sidebar-content {
+        padding: 10px;
+    }
+
+    .sidebar-footer {
+        padding: 10px;
+    }
+
+    .home-page-form .form-section-title {
+        font-size: 17px;
+    }
+
+    .admin-pagination {
+        gap: 4px;
+    }
+
+    .admin-page {
+        min-width: 30px;
+        height: 32px;
+        padding: 0 6px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITÉ ET STABILITÉ
+========================================================= */
+
+button,
+input,
+select,
+textarea,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+.btn,
+.admin-page,
+.nav-link,
+.logout-button {
+    touch-action: manipulation;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"] {
+    width: auto;
+    max-width: 100%;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+
+
+/* =========================================
+   RESPONSIVE SIDEBAR — MOBILE & TABLETTE
+   ========================================= */
+
+/* Éléments mobiles masqués sur desktop */
+.mobile-admin-header,
+.sidebar-overlay,
+.sidebar-close {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    /* Header mobile */
+    .mobile-admin-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        padding: 0 16px;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+        z-index: 1001;
+        box-sizing: border-box;
+    }
+
+    /* Logo mobile encore plus petit */
+    .mobile-brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        max-width: 125px;
+        overflow: hidden;
+    }
+
+    .mobile-brand img {
+        display: block;
+        width: auto;
+        height: 28px;
+        max-width: 115px;
+        object-fit: contain;
+    }
+
+    /* Bouton hamburger */
+    .sidebar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #111827;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .sidebar-toggle svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .sidebar-toggle:hover {
+        background: #f3f4f6;
+    }
+
+    /* Sidebar mobile */
+    .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: min(290px, 85vw) !important;
+        height: 100dvh !important;
+        max-height: 100dvh;
+        margin: 0 !important;
+        z-index: 1003;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(-105%);
+        visibility: hidden;
+        transition:
+            transform 0.25s ease,
+            visibility 0.25s ease;
+        box-sizing: border-box;
+        padding-top: 0;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    /* Zone du logo dans le sidebar */
+    .sidebar-header {
+        min-height: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 56px 10px 18px !important;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    /* Logo dans le sidebar */
+    .sidebar-header .brand {
+        display: inline-flex;
+        align-items: center;
+        max-width: 145px;
+        height: 40px;
+        overflow: hidden;
+    }
+
+    .sidebar-header .brand-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: 36px;
+        max-width: 135px;
+    }
+
+    .sidebar-header .brand-logo img {
+        display: block;
+        width: auto;
+        height: 30px;
+        max-width: 125px;
+        object-fit: contain;
+    }
+
+    /* Bouton X : toujours en haut à droite */
+    .sidebar-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 1005;
+    }
+
+    .sidebar-close svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .sidebar-close:hover {
+        background: rgba(255, 255, 255, 0.16);
+    }
+
+    /* Overlay */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        z-index: 1002;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    .sidebar-overlay.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Bloquer le scroll quand le menu est ouvert */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    /* Masquer le header desktop et son bouton Aller au site */
+    .admin-header {
+        display: none !important;
+    }
+
+    /* Le contenu commence sous le header mobile */
+    .main {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 72px !important;
+        box-sizing: border-box;
+    }
+
+    .topbar {
+        margin-top: 0;
+    }
+}
+
+/* Petit écran : logo et marges encore plus compacts */
+@media (max-width: 480px) {
+
+    .mobile-admin-header {
+        height: 52px;
+        padding: 0 12px;
+    }
+
+    .mobile-brand {
+        max-width: 105px;
+        height: 32px;
+    }
+
+    .mobile-brand img {
+        height: 44px;
+        max-width: 100px;
+    }
+
+    .sidebar-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .main {
+        padding: 64px 12px 20px !important;
+    }
+
+    .sidebar-header {
+        min-height: 60px;
+        height: 60px;
+    }
+
+    .sidebar-header .brand-logo img {
+        height: 26px;
+        max-width: 110px;
+    }
+
+    .sidebar-close {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Desktop : conserver le layout existant */
+@media (min-width: 1025px) {
+
+    .mobile-admin-header,
+    .sidebar-overlay,
+    .sidebar-close {
+        display: none !important;
+    }
+
+    .sidebar {
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    .admin-header {
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mobile-admin-header {
+        background: #000000 !important;
+        border-bottom: 1px solid #222222 !important;
+    }
+
+    .mobile-admin-header .sidebar-toggle {
+        background: #111111 !important;
+        border: 1px solid #333333 !important;
+        color: #ffffff !important;
+    }
+
+    .mobile-admin-header .sidebar-toggle:hover {
+        background: #222222 !important;
+    }
+}
+
+/* Correction du contenu caché par le header mobile */
+@media screen and (max-width: 1024px) {
+
+    .mobile-admin-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 56px !important;
+        z-index: 9999 !important;
+    }
+
+    /* Décaler toute la zone de contenu sous le header */
+    body > .main,
+    body main.main {
+        margin-top: 0 !important;
+        padding-top: 100px !important;
+        position: relative !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Éviter que le titre remonte sous le header */
+    .main .topbar {
+        position: relative !important;
+        top: auto !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        transform: none !important;
+    }
+
+    .main .page-heading {
+        position: relative !important;
+        top: auto !important;
+        margin-top: 0 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+}
+
+/* Petits écrans */
+@media screen and (max-width: 480px) {
+    .mobile-admin-header {
+        height: 62px !important;
+    }
+
+    body > .main,
+    body main.main {
+        padding-top: 80px !important;
+    }
+}
