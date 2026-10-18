@@ -1,7 +1,31 @@
 @php
+    use Illuminate\Support\Facades\Storage;
+    $banner = $contacts->get('banner');
+    $address = $contacts->get('address');
+    $phones = $contacts->get('phones');
+    $email = $contacts->get('email');
+    $hours = $contacts->get('hours');
+    $map = $contacts->get('map');
+    $form = $contacts->get('form');
+    $social = $contacts->get('social');
+    $imageUrl = function ($path) {
+        if (!$path) {
+            return null;
+        }
+        if (
+            str_starts_with($path, 'assets/') ||
+            str_starts_with($path, 'http://') ||
+            str_starts_with($path, 'https://') ||
+            str_starts_with($path, '/')
+        ) {
+            return str_starts_with($path, 'assets/')
+                ? asset($path)
+                : $path;
+        }
+        return Storage::disk('public')->url($path);
+    };
+    $socialLinks = $social?->data ?? [];
     $phoneNumbers = $phones?->data['phones'] ?? [];
-    $email = $sections->get('email');
-            $address = $sections->get('address');
 @endphp
 <footer
     class="site-footer"

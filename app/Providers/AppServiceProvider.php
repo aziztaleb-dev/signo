@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('front.*', function ($view) {
             static $menuCategories = null;
-            static $sections = null;
+            static $contacts = null;
 
             if ($menuCategories === null) {
                 $menuCategories = WorkCategory::with(['subcategories' => function ($query) {
@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
             }
 
-            if ($sections === null) {
-                $sections = ContactPageSetting::query()
+            if ($contacts === null) {
+                $contacts = ContactPageSetting::query()
                     ->where('is_active', true)
                     ->orderBy('sort_order')
                     ->get()
@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with([
                 'menuCategories' => $menuCategories,
-                'sections' => $sections,
+                'contacts' => $contacts,
             ]);
         });
     }
