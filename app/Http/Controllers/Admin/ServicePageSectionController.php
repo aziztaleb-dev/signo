@@ -100,7 +100,7 @@ class ServicePageSectionController extends Controller
         /*
          * Statut.
          */
-        $data['is_active'] = $request->boolean('is_active');
+        //$data['is_active'] = $request->boolean('is_active');
 
         $servicePageSection->update($data);
 

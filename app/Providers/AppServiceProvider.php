@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ContactPageSetting;
 use Illuminate\Support\ServiceProvider;
 use App\Models\WorkCategory;
 use Illuminate\Support\Facades\View;
@@ -23,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('front.*', function ($view) {
             static $menuCategories = null;
+            static $sections = null;
 
-            // Une seule requête par page, même si plusieurs vues front sont rendues
             if ($menuCategories === null) {
                 $menuCategories = WorkCategory::with(['subcategories' => function ($query) {
                     $query->orderBy('created_at', 'DESC');
@@ -33,7 +34,18 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
             }
 
-            $view->with('menuCategories', $menuCategories);
+            if ($sections === null) {
+                $sections = ContactPageSetting::query()
+                    ->where('is_active', true)
+                    ->orderBy('sort_order')
+                    ->get()
+                    ->keyBy('key');
+            }
+
+            $view->with([
+                'menuCategories' => $menuCategories,
+                'sections' => $sections,
+            ]);
         });
     }
 }

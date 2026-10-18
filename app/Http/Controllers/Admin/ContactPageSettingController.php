@@ -44,7 +44,7 @@ class ContactPageSettingController extends Controller
                 ->store('contact-page', 'public');
         }
 
-        $data['is_active'] = $request->boolean('is_active');
+        //$data['is_active'] = $request->boolean('is_active');
 
         $contactPageSetting->update($data);
 

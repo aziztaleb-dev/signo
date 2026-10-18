@@ -1,3 +1,8 @@
+@php
+    $phoneNumbers = $phones?->data['phones'] ?? [];
+    $email = $sections->get('email');
+            $address = $sections->get('address');
+@endphp
 <footer
     class="site-footer"
     style="background-image:linear-gradient(var(--banner-shade), var(--banner-shade)),url('{{ asset('assets/images/footer.png') }}');">
@@ -46,27 +51,27 @@
             <h2>
                 NOUS JOINDRE
             </h2>
+            @if ($phoneNumbers)
+                @foreach ($phoneNumbers as $index => $phone)
+                    @if (!empty($phone['label']))
+                        <a class="footer-contact-line" href="tel:{{ $phone['value'] ?? $phone['label'] }}">
+                            {{ $phone['label'] }}
+                        </a>
+                    @endif
+                @endforeach
+            @endif
 
+            @if ($email)
+                <a class="footer-contact-line" href="mailto:{{ $email->content }}">
+                    {{ $email->content }}
+                </a>
+            @endif
 
-            <a class="footer-contact-line" href="tel:+21670730491">
-                +216 70 730 491
-            </a>
-
-            <a class="footer-contact-line" href="tel:+21670730485">
-                +216 70 730 485
-            </a>
-
-            <a
-                class="footer-contact-line"
-                href="mailto:signo@signo.com.tn"
-            >
-                signo@signo.com.tn
-            </a>
-
-
-            <p class="footer-contact-line">
-                15 rue El Ifada - 2080 Ariana - Tunisie
-            </p>
+            @if ($address)
+                <p class="footer-contact-line">
+                    {{ $address->content }}
+                </p>
+            @endif
 
         </div>
 
