@@ -6,6 +6,7 @@
 
 @section('content')
 
+
     <div class="card">
 
         <form
@@ -82,14 +83,36 @@
                     @endphp
 
                     @foreach ($currentClients as $client)
-                        <div class="client-row" style="display:flex; gap:8px; align-items:center; margin-top:8px;">
+                        <div class="client-row">
+
+                            <button
+                                type="button"
+                                class="client-drag-handle"
+                                aria-label="Déplacer cette référence"
+                                title="Glisser pour réorganiser"
+                            >
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <circle cx="9" cy="5" r="1.5"></circle>
+                                    <circle cx="15" cy="5" r="1.5"></circle>
+                                    <circle cx="9" cy="12" r="1.5"></circle>
+                                    <circle cx="15" cy="12" r="1.5"></circle>
+                                    <circle cx="9" cy="19" r="1.5"></circle>
+                                    <circle cx="15" cy="19" r="1.5"></circle>
+                                </svg>
+                            </button>
+
                             <input
                                 type="text"
                                 name="clients[]"
                                 value="{{ $client }}"
                                 maxlength="255"
                                 placeholder="Ex : BIAT"
-                                style="margin:0;"
                             >
 
                             <button
@@ -99,6 +122,7 @@
                             >
                                 Retirer
                             </button>
+
                         </div>
                     @endforeach
 
@@ -136,54 +160,99 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+
     <script>
         (function () {
-            var wrapper = document.getElementById('clients-wrapper');
-            var addButton = document.getElementById('add-client');
+            const wrapper = document.getElementById('clients-wrapper');
+            const addButton = document.getElementById('add-client');
 
+            if (!wrapper || !addButton) {
+                return;
+            }
+
+            // Activer le drag & drop.
+            Sortable.create(wrapper, {
+                animation: 180,
+                handle: '.client-drag-handle',
+                draggable: '.client-row',
+                ghostClass: 'sortable-ghost',
+                chosenClass: 'sortable-chosen',
+                forceFallback: false,
+                fallbackTolerance: 5
+            });
+
+            // Créer une nouvelle référence.
             function createRow() {
-                var row = document.createElement('div');
+                const row = document.createElement('div');
+
                 row.className = 'client-row';
-                row.style.cssText = 'display:flex; gap:8px; align-items:center; margin-top:8px;';
 
-                var input = document.createElement('input');
-                input.type = 'text';
-                input.name = 'clients[]';
-                input.maxLength = 255;
-                input.placeholder = 'Ex : BIAT';
-                input.style.margin = '0';
+                row.innerHTML = `
+                <button
+                    type="button"
+                    class="client-drag-handle"
+                    aria-label="Déplacer cette référence"
+                    title="Glisser pour réorganiser"
+                >
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <circle cx="9" cy="5" r="1.5"></circle>
+                        <circle cx="15" cy="5" r="1.5"></circle>
+                        <circle cx="9" cy="12" r="1.5"></circle>
+                        <circle cx="15" cy="12" r="1.5"></circle>
+                        <circle cx="9" cy="19" r="1.5"></circle>
+                        <circle cx="15" cy="19" r="1.5"></circle>
+                    </svg>
+                </button>
 
-                var button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'btn btn-danger remove-client';
-                button.style.cssText = 'padding:10px 12px; font-size:12px;';
-                button.textContent = 'Retirer';
+                <input
+                    type="text"
+                    name="clients[]"
+                    maxlength="255"
+                    placeholder="Ex : BIAT"
+                >
 
-                row.appendChild(input);
-                row.appendChild(button);
+                <button
+                    type="button"
+                    class="btn btn-danger remove-client"
+                    style="padding:10px 12px; font-size:12px;"
+                >
+                    Retirer
+                </button>
+            `;
 
                 return row;
             }
 
+            // Ajouter une référence.
             addButton.addEventListener('click', function () {
-                var row = createRow();
+                const row = createRow();
+
                 wrapper.appendChild(row);
                 row.querySelector('input').focus();
             });
 
+            // Supprimer une référence.
             wrapper.addEventListener('click', function (event) {
-                var button = event.target.closest('.remove-client');
+                const button = event.target.closest('.remove-client');
 
                 if (!button) {
                     return;
                 }
 
-                var rows = wrapper.querySelectorAll('.client-row');
+                const rows = wrapper.querySelectorAll('.client-row');
+                const row = button.closest('.client-row');
 
                 if (rows.length > 1) {
-                    button.closest('.client-row').remove();
+                    row.remove();
                 } else {
-                    rows[0].querySelector('input').value = '';
+                    row.querySelector('input').value = '';
                 }
             });
         })();

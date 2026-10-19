@@ -80,11 +80,22 @@ class ProjectController extends Controller
      * Nettoie la liste des références clients :
      * supprime les lignes vides et les doublons.
      */
+    /**
+     * Nettoie les références clients en conservant leur ordre.
+     */
     private function cleanClients(array $clients): array
     {
-        $clients = array_map(fn ($client) => trim((string) $client), $clients);
-        $clients = array_filter($clients, fn ($client) => $client !== '');
+        $clients = array_map(
+            fn ($client) => trim((string) $client),
+            $clients
+        );
 
+        $clients = array_filter(
+            $clients,
+            fn ($client) => $client !== ''
+        );
+
+        // Supprimer les doublons sans modifier l'ordre.
         return array_values(array_unique($clients));
     }
 }
