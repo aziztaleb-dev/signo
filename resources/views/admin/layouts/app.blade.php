@@ -233,6 +233,26 @@
             Projets
         </a>
 
+        <a
+            href="{{ route('admin.client-logos.index') }}"
+            class="nav-link {{ request()->routeIs('admin.client-logos.*') ? 'active' : '' }}"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <path d="M21 15l-5-5L5 21"></path>
+            </svg>
+
+            <span>Logos clients</span>
+        </a>
+
         @php
             $worksOpen = request()->routeIs('admin.work-categories.*')
                 || request()->routeIs('admin.work-subcategories.*')

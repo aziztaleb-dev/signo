@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\HomePageSectionController;
 use App\Http\Controllers\Admin\ServicePageSectionController;
 use App\Http\Controllers\Admin\ContactPageSettingController;
+use App\Http\Controllers\Admin\ClientLogoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -42,6 +43,15 @@ Route::prefix('contact-page')
         Route::get('/{contactPageSetting}/edit', 'edit')->name('edit');
         Route::put('/{contactPageSetting}', 'update')->name('update');
     });
+
+Route::resource('client-logos', ClientLogoController::class)
+    ->except(['show'])
+    ->names('client-logos');
+
+Route::post(
+    'client-logos/reorder',
+    [ClientLogoController::class, 'reorder']
+)->name('client-logos.reorder');
 
 Route::resource('news', NewsController::class)->except(['show']);
 Route::resource('new-products', NewProductController::class)

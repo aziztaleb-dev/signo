@@ -113,118 +113,17 @@
 
 
     {{-- Clients --}}
-    <div
-        aria-label="Clients de SIGNO"
-        class="proj-client-grid"
-    >
+    <div aria-label="Clients de SIGNO" class="proj-client-grid">
 
-        <img
-            src="{{ asset('assets/images/client-01.png') }}"
-            alt="ADP"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-02.png') }}"
-            alt="Four Seasons"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-03.png') }}"
-            alt="Agence Italienne pour la Coopération au Développement"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-04.png') }}"
-            alt="Hilton"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-05.png') }}"
-            alt="Carrefour"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-06.png') }}"
-            alt="Peugeot"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-07.png') }}"
-            alt="Tunisair"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-08.png') }}"
-            alt="EY"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-09.png') }}"
-            alt="European Investment Bank"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-10.png') }}"
-            alt="Sheraton"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-11.png') }}"
-            alt="Azur City"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-12.png') }}"
-            alt="Anantara"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-13.png') }}"
-            alt="BIAT"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-14.png') }}"
-            alt="Radisson Blu"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-15.png') }}"
-            alt="Roche"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-16.png') }}"
-            alt="Rotary"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-17.png') }}"
-            alt="ONU"
-            loading="lazy"
-        >
-
-        <img
-            src="{{ asset('assets/images/client-18.png') }}"
-            alt="Pharmaghreb"
-            loading="lazy"
-        >
+        @foreach ($clientLogos as $clientLogo)
+            <img
+                src="{{ str_starts_with($clientLogo->image, 'assets/')
+                ? asset($clientLogo->image)
+                : asset('storage/' . $clientLogo->image) }}"
+                alt="{{ $clientLogo->name }}"
+                loading="lazy"
+            >
+        @endforeach
 
     </div>
 
