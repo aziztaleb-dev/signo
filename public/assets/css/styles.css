@@ -1917,7 +1917,7 @@ img {
 
 .contact-info-item {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     align-items: flex-start;
 }
 

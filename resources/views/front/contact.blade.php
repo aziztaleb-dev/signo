@@ -120,7 +120,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h2>{{ $hours->title }}</h2>
-                            <p>
+                            <p style="font-size: 13px">
                                 {!! nl2br(e($hours->content)) !!}
                             </p>
                         </div>
