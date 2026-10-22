@@ -27,7 +27,7 @@
                     : $path;
             }
 
-            return Storage::disk('public')->url($path);
+            return asset('storage-files/' . $path);
         };
 
         $banner = $sections->get('banner');
