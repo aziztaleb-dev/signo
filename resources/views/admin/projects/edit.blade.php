@@ -40,7 +40,7 @@
                 @if (!empty($project->image))
                     <div style="margin:8px 0 12px;">
                         <img
-                            src="{{ asset('storage/' . $project->image) }}"
+                            src="{{ asset('storage-files/' . $project->image) }}"
                             alt="{{ $project->title }}"
                             width="100"
                             style="

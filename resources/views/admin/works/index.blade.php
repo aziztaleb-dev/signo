@@ -173,7 +173,7 @@
                                 <div style="position:relative; width:52px; height:52px;">
 
                                     <img
-                                        src="{{ asset('storage/' . $workImages[0]) }}"
+                                        src="{{ asset('storage-files/' . $workImages[0]) }}"
                                         alt="{{ $work->title }}"
                                         style="
                                             width:52px;

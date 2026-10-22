@@ -90,7 +90,7 @@
                             @if ($item->image)
 
                                 <img
-                                    src="{{ asset('storage/' . $item->image) }}"
+                                    src="{{ asset('storage-files/' . $item->image) }}"
                                     alt="{{ $item->name }}"
                                     style="
                                         width:52px;

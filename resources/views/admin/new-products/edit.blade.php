@@ -50,7 +50,7 @@
                             <div style="width:110px;">
 
                                 <img
-                                    src="{{ asset('storage/' . $imagePath) }}"
+                                    src="{{ asset('storage-files/' . $imagePath) }}"
                                     alt="{{ $newProduct->name }}"
                                     style="
                                         width:110px;
@@ -150,7 +150,7 @@
                 @if ($newProduct->pdf)
                     <div style="margin:8px 0 10px;">
                         <a
-                            href="{{ asset('storage/' . $newProduct->pdf) }}"
+                            href="{{ asset('storage-files/' . $newProduct->pdf) }}"
                             target="_blank"
                             rel="noopener"
                             style="

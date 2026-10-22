@@ -97,7 +97,7 @@
                                 <div style="position:relative; width:52px; height:52px;">
 
                                     <img
-                                        src="{{ asset('storage/' . $productImages[0]) }}"
+                                        src="{{ asset('storage-files/' . $productImages[0]) }}"
                                         alt="{{ $product->name }}"
                                         style="
                                             width:52px;
@@ -194,7 +194,7 @@
                             @if ($product->pdf)
 
                                 <a
-                                    href="{{ asset('storage/' . $product->pdf) }}"
+                                    href="{{ asset('storage-files/' . $product->pdf) }}"
                                     target="_blank"
                                     rel="noopener"
                                     style="

@@ -29,7 +29,7 @@
                 <div style="margin:10px 0;">
                     <img src="{{ str_starts_with($clientLogo->image, 'assets/')
                 ? asset($clientLogo->image)
-                : asset('storage/' . $clientLogo->image) }}"
+                : asset('storage-files/' . $clientLogo->image) }}"
                          alt="{{ $clientLogo->name }}"
                          style="max-width:220px;max-height:120px;object-fit:contain;">
                 </div>

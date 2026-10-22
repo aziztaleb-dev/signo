@@ -101,7 +101,7 @@
                             <div style="width:110px;">
 
                                 <img
-                                    src="{{ asset('storage/' . $imagePath) }}"
+                                    src="{{ asset('storage-files/' . $imagePath) }}"
                                     alt="{{ $work->title }}"
                                     style="
                                         width:110px;

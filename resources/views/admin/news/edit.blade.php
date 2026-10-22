@@ -39,7 +39,7 @@
                 @if (!empty($news->image))
                     <div style="margin:8px 0 12px;">
                         <img
-                            src="{{ asset('storage/' . $news->image) }}"
+                            src="{{ asset('storage-files/' . $news->image) }}"
                             alt="{{ $news->name }}"
                             width="100"
                             style="
