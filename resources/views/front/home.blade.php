@@ -56,7 +56,7 @@
                 return $path;
             }
 
-            return \Illuminate\Support\Facades\Storage::disk('public')->url($path);
+            return   asset('storage-files/' . $path) ;
         };
 
         $getButtonUrl = function ($section) {

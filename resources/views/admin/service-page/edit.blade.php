@@ -296,7 +296,7 @@
 
                             $currentImageUrl = str_starts_with($currentImage, 'assets/')
                                 ? asset($currentImage)
-                                : \Illuminate\Support\Facades\Storage::disk('public')->url($currentImage);
+                                : {{ asset('storage-files/' . $currentImage) }};
                         @endphp
 
                         <div class="image-card">
@@ -386,7 +386,7 @@
                                 @php
                                     $galleryImageUrl = str_starts_with($path, 'assets/')
                                         ? asset($path)
-                                        : \Illuminate\Support\Facades\Storage::disk('public')->url($path);
+                                        :  {{ asset('storage-files/' . $path) }};
                                 @endphp
 
                                 <div class="image-card">
