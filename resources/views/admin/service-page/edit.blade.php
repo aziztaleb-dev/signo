@@ -296,7 +296,7 @@
 
                             $currentImageUrl = str_starts_with($currentImage, 'assets/')
                                 ? asset($currentImage)
-                                : {{ asset('storage-files/' . $currentImage) }};
+                                :  asset('storage-files/' . $currentImage) ;
                         @endphp
 
                         <div class="image-card">
@@ -386,7 +386,7 @@
                                 @php
                                     $galleryImageUrl = str_starts_with($path, 'assets/')
                                         ? asset($path)
-                                        :  {{ asset('storage-files/' . $path) }};
+                                        :  asset('storage-files/' . $path) ;
                                 @endphp
 
                                 <div class="image-card">
