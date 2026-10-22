@@ -18,6 +18,13 @@ body {
     color: var(--text);
 }
 
+input[type="checkbox"] {
+    accent-color: var(--primary);
+}
+
+.form-group input[type="checkbox"] {
+    accent-color: var(--primary);
+}
 
 .admin-header {
     position: fixed;
