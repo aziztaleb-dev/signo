@@ -55,7 +55,7 @@
                     <div style="height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
                         <img src="{{ str_starts_with($clientLogo->image, 'assets/')
                 ? asset($clientLogo->image)
-                : url('storage-files/' . $clientLogo->image) }} "
+                : asset('storage-files/' . $clientLogo->image) }} "
                              alt="{{ $clientLogo->name }}"
                              loading="lazy"
                              style="max-width:100%;max-height:90px;object-fit:contain;">
