@@ -35,7 +35,7 @@
                     @if (count($images) > 0)
                         <img
                             id="product-main-image"
-                            src="{{ asset('storage/' . $images[0]) }}"
+                            src="{{ asset('storage-files/' . $images[0]) }}"
                             alt="{{ $work->title }}"
                         >
                     @endif
@@ -72,10 +72,10 @@
                             <button
                                 type="button"
                                 class="product-thumbnail {{ $loop->first ? 'active' : '' }}"
-                                data-image="{{ asset('storage/' . $imagePath) }}"
+                                data-image="{{ asset('storage-files/' . $imagePath) }}"
                             >
                                 <img
-                                    src="{{ asset('storage/' . $imagePath) }}"
+                                    src="{{ asset('storage-files/' . $imagePath) }}"
                                     alt="{{ $work->title }} - image {{ $index + 1 }}"
                                 >
                             </button>

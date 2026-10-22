@@ -58,7 +58,7 @@
 
                         @if ($item->image)
                             <img
-                                src="{{ asset('storage/' . $item->image) }}"
+                                src="{{ asset('storage-files/' . $item->image) }}"
                                 alt="{{ $item->name }}"
                                 loading="lazy"
                             >
@@ -150,7 +150,7 @@
                                     type="button"
                                 >
                                     <img
-                                        src="{{ asset('storage/' . $imagePath) }}"
+                                        src="{{ asset('storage-files/' . $imagePath) }}"
                                         alt="{{ $product->name }} — vue {{ $index + 1 }}"
                                         loading="lazy"
                                     >
@@ -193,7 +193,7 @@
                         @if ($product->pdf)
 
                             <a
-                                href="{{ asset('storage/' . $product->pdf) }}"
+                                href="{{ asset('storage-files/' . $product->pdf) }}"
                                 class="ps-sheet-btn"
                                 target="_blank"
                                 rel="noopener"

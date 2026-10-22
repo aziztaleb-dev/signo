@@ -38,7 +38,7 @@
                     @if ($firstImage)
                         <img
                             alt="{{ $work->title }}"
-                            src="{{ asset('storage/' . $firstImage) }}"
+                            src="{{ asset('storage-files/' . $firstImage) }}"
                             loading="lazy"
                         >
                     @endif

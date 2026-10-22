@@ -85,7 +85,7 @@
 
                         @if ($project->image)
                             <img
-                                src="{{ asset('storage/' . $project->image) }}"
+                                src="{{ asset('storage-files/' . $project->image) }}"
                                 alt="Réalisation SIGNO — {{ $project->title }}"
                                 class="proj-photo"
                                 loading="lazy"
@@ -119,7 +119,7 @@
             <img
                 src="{{ str_starts_with($clientLogo->image, 'assets/')
                 ? asset($clientLogo->image)
-                : asset('storage/' . $clientLogo->image) }}"
+                : asset('storage-files/' . $clientLogo->image) }}"
                 alt="{{ $clientLogo->name }}"
                 loading="lazy"
             >
