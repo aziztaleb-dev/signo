@@ -9,6 +9,7 @@
 
     <title>@yield('title', 'Administration') — Dr Nadine Ghithia</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{ asset('assets-admin/css/style.css') }}">
 
