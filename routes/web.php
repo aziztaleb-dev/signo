@@ -34,6 +34,19 @@ Route::post('/contact', [ContactController::class, 'store'])
     ->name('contact.store');
 
 
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/client-logos/{filename}', function ($filename) {
+    $path = 'client-logos/' . $filename;
+
+    abort_unless(Storage::disk('public')->exists($path), 404);
+
+    return response()->file(
+        Storage::disk('public')->path($path)
+    );
+})->where('filename', '[^/]+');
+
+
 require __DIR__ . '/auth.php';
 
 
