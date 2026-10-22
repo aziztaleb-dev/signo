@@ -153,7 +153,7 @@
                         <div class="image-card">
 
                             <img
-                                src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($section->image) }}"
+                                src="{{ asset('storage-files/' . $section->image) }}"
                                 alt="{{ $section->name }}"
                             >
 
@@ -232,7 +232,7 @@
                                 <div class="image-card">
 
                                     <img
-                                        src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($path) }}"
+                                        src="{{ asset('storage-files/' . $path) }}"
                                         alt="{{ $section->name }}"
                                     >
 
