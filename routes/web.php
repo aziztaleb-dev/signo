@@ -36,7 +36,7 @@ Route::post('/contact', [ContactController::class, 'store'])
 
 use Illuminate\Support\Facades\Storage;
 
-Route::get('/storage-files/{path}', function (string $path) {
+Route::get('/storage/{path}', function (string $path) {
     $disk = Storage::disk('public');
 
     abort_if(
